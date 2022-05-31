@@ -1,0 +1,129 @@
+# May 31, 2022
+
+# Questions and difficulties that we have had so far
+# teach something small
+# take the next tasks
+# that is it
+
+# Any body have any questions !!
+  # 
+
+## Tar or archive a file in linux
+
+  ! The tar command is used to rip a collection of files and directories into a highly compressed archive file commonly called tarball or tar, gzip and bzip in Linux.
+
+    tar -czf myhome_directory.tar.gz /root 
+    = 
+    command + option + name we want to give to tarbal + what we want to archive
+
+    tar = command to interact or create a tarbal
+    -czf = options to use with tar command
+        c – Creates a new .tar archive file.
+        v – Verbosely show the .tar file progress.
+        f – File name type of the archive file.
+        z - to create a compressed gzip archive file
+    myhome_directory.tar.gz = name we want to give to tarbal
+    /root = what we want to archive/tarbal or what we want to compress
+
+## Untar tar Archive File in Linux
+  ! tar -xvf myhome_directory.tar.gz -C ./untar 
+
+    What does the command above achieve:  
+      The above command uncompress/untar/unarchive the tarbal(myhome_directory.tar.gz) into the directory untar
+
+    tar -xvf myhome_directory.tar.gz -C ./untar 
+    =
+    command + option + name of the tarball + where want the contents of the tarball to be stored/placed
+
+    tar = command to interact with the tarball
+    -xvf = options to use with the tar command
+      x = enables us to extract
+      c = creates the files from the tarball 
+      f = to give the files names
+    myhome_directory.tar.gz = the tarball
+    Optional:
+      -C used if we want to specify a new location other than current working directory
+      ./untar = directory where want to store the contents of the tarbal
+
+
+# Variables in Bash scripts
+  What is a compiler:
+    - it is a program that translate the a programming languages source code into machine code, byte code or another programming language
+  What is a variable: an argument that we create or define that stores something like an interger, a string, boolean etc
+
+        what is an interger: an interger is a number with no decimal value [0,1 ..., 9] or it is an odd or even number or it is a whole number 
+
+        What is a string: 
+            - it is a line of caracter or a single character 
+            - that we always define in a single quote or double quote
+            - e,g "today" 'age12' 'it' "i-hate-linux"
+
+        What is a boolean: 
+          - it is a variable that only has two values true or false
+          - e.g again, it can have two possible values, true or false
+          - it depends on the programming language, it could or could not be in quotes
+
+        what is a float: 
+            - a variable that is not a whole number or must be in a decimal format
+            - it does not always have to be in quotes
+            - e.g 1.00 9.50 11.60
+
+        What is a double:
+            - it is a variable that can store very big/large numbers
+            - it can be a whole or decimal number
+            e.g 1,000,000.00, 1.12 etc
+
+      [root@centos-1 ~]# cat bash-variable.sh
+      #!/usr/bin/bash
+
+      # Create a global variables in bash script
+      name="Bobylashly, Wrestler"
+
+      [root@centos-1 ~]# ./bash-variable.sh
+      Bobylashly, Wrestler
+
+      # print the valute of the variable
+      echo $name
+        # What is the command to give the file bash-variable.sh execute permission
+        chmod +x bash-variable.sh
+
+        # How to create a variable that tells us your name
+          NAME="Cypro, F"
+        # How to create a variable that tells us your age
+          AGE=30
+## Source https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/#:~:text=In%20Linux%20and%20Unix%20based,name%20and%20an%20associated%20value.
+
+Variables have the following format:
+KEY=value
+KEY=56
+KEY="Some other value"
+KEY=value1:value2
+
+* The names of the variables are case-sensitive. By convention, environment variables should have UPPER CASE names.
+* When assigning multiple values to the variable they must be separated by the colon : character.
+* There is no space around the equals = symbol.
+
+Variables can be classified into two main categories, environment variables, and shell variables.
+
+  Environment variables: are variables that are available system-wide and are inherited by all spawned child processes and shells.
+
+  Shell variables: are variables that apply only to the current shell instance. Each shell such as zsh and bash, has its own set of internal shell variables.
+
+There are several commands available that allow you to list and set environment variables in Linux:
+
+env: – The command allows you to run another program in a custom environment without modifying the current one. When used without an argument it will print a list of the current environment variables.
+printenv: – The command prints all or the specified environment variables.
+set: – The command sets or unsets shell variables. When used without an argument it will print a list of all variables including environment and shell variables, and shell functions.
+unset: – The command deletes shell and environment variables.
+export: – The command sets environment variables.
+
+
+
+
+Question:
+  should we use anyname we want to give to the tarball
+    What do you think: Yes we can give any name to the tarbal, but it needs to have the extention .tar.gz
+
+
+
+	
