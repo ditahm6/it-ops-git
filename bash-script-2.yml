@@ -12,17 +12,17 @@
 
   ! The tar command is used to rip a collection of files and directories into a highly compressed archive file commonly called tarball or tar, gzip and bzip in Linux.
 
-    tar -czf myhome_directory.tar.gz /root 
+    tar -czf myroot_directory.tar.gz /root 
     = 
     command + option + name we want to give to tarbal + what we want to archive
 
-    tar = command to interact or create a tarbal
+    tar = command to interact with or create a tarbal
     -czf = options to use with tar command
-        c – Creates a new .tar archive file.
-        v – Verbosely show the .tar file progress.
-        f – File name type of the archive file.
+        c – creates a new .tar file(tarbal) or unarchive a .tar file(tarbal)
+        v – verbosely show the .tar file progress
+        f – File name type of the archive file
         z - to create a compressed gzip archive file
-    myhome_directory.tar.gz = name we want to give to tarbal
+    myroot_directory.tar.gz = name we want to give to tarbal
     /root = what we want to archive/tarbal or what we want to compress
 
 ## Untar tar Archive File in Linux
@@ -56,7 +56,7 @@
         What is a string: 
             - it is a line of caracter or a single character 
             - that we always define in a single quote or double quote
-            - e,g "today" 'age12' 'it' "i-hate-linux"
+            - e,g "today" 'age12' 'it' "i-hate-linux" "My bame is Daniel"
 
         What is a boolean: 
           - it is a variable that only has two values true or false
@@ -94,7 +94,7 @@
 ## Source https://linuxize.com/post/how-to-set-and-list-environment-variables-in-linux/#:~:text=In%20Linux%20and%20Unix%20based,name%20and%20an%20associated%20value.
 
 Variables have the following format:
-KEY=value
+KEY=value  **Not a good format
 KEY=56
 KEY="Some other value"
 KEY=value1:value2
@@ -115,15 +115,151 @@ env: – The command allows you to run another program in a custom environment w
 printenv: – The command prints all or the specified environment variables.
 set: – The command sets or unsets shell variables. When used without an argument it will print a list of all variables including environment and shell variables, and shell functions.
 unset: – The command deletes shell and environment variables.
-export: – The command sets environment variables.
+export: – The command sets/creates environment variables.
 
 
+export COMPLEMENT="Hardworking"
 
 
-Question:
-  should we use anyname we want to give to the tarball
-    What do you think: Yes we can give any name to the tarbal, but it needs to have the extention .tar.gz
+June 04, 2022
+# Global vs. Local variables insie a script
+
+What is a global variable:
+    A global variable is a variable that can be used anywhere inside the script
+
+What is a local variable:
+    A local variable will only be used within the function that it is declared in
+
+What Are Bash Functions:
+# https://phoenixnap.com/kb/bash-function#:~:text=A%20bash%20function%20is%20a,procedures%2C%20methods%2C%20or%20subroutines.
+  A bash function is a technique for grouping reusable bits of code under one name for later use. The bash function is like a script within a script.
+
+  Why do we use functions:
+    1. A function is read directly into the shell's memory and stored for later use. Since computer memory is not an issue nowadays, using functions is faster than repeating code.
+
+    2. Functions help organize long shell scripts into modular and reusable code blocks. The chunks are easier to develop and maintain.
+
+  How to Use Bash Functions:
+    There are two ways to implement Bash functions:
+
+    Inside a shell script, where the function definition must be before any calls on the function
+    Alongside other bash alias commands and directly in the terminal as a command
+  Bash Function Syntax:
+    There are two different ways to declare a bash function:
+    1. The most widely used format is:
+        <function name> () {
+        <commands>
+        }
+        <function name> () { <commands>; }
+    Alternatively, the same function can be one line:
+
+    2. The alternative way to write a bash function is using the reserved word function:
+        function <function name> {
+        <commands>
+        }      
+      Or in one line:
+        function <function name> { <commands>; }
+  Take note of the following behaviors and tips when using functions:
+
+  When writing in one line, the commands must end with a semicolon (;), whether in bash scripts or the terminal directly.
+  Adding the function reserved word makes parentheses optional.
+  The commands between the curly braces { <commands> } are called the function's body. The body can contain any number of declarations, variables, loops, or conditional statements.
+  Try to use descriptive names for functions. Although not necessary when testing functions and commands, descriptive names help in settings where other developers look at the code.
+
+  How to Declare and Call a Function:
+    A function does not execute when declared. The function's body executes when invoked after declaration. Follow the steps below to create a bash script with various syntax options
+
+    1. Using your favorite text editor, create a shell script called syntax. If you're using Vim, run the following line in the terminal
+    vim syntax.sh
+
+    2. Add the code below to the shell script:
+      # syntax.sh
+      # Declaring functions using the reserved word function
+      # Multiline
+      function f1 {
+      echo Hello I\'m function 1
+      echo Bye!
+      }
+      # One line
+      function f2 { echo Hello I\'m function 2; echo Bye!; }
+      # Declaring functions without the function reserved word
+      # Multiline
+      f3 () {
+      echo Hello I\'m function 3
+      echo Bye!
+      }
+      # One line
+      f4 () { echo Hello I\'m function 4; echo Bye!; }
+      # Invoking functions
+      f4
+      f3
+      f2
+      f1
 
 
+    The script does the following:
 
+    Lines 4-9 demonstrate how to define a function using the function reserved word. The function f1 uses a multiline syntax in lines 4-6, whereas f2 uses one line syntax on line 9.
+    Lines 13-18 show the more familiar syntax. f3 is a multiline function defined in lines 13-16, while f4 on line 18 is the single line equivalent.
+    Lines 21-24 invoke the previously defined functions and execute the commands in the corresponding function's bodies. The calls are made in reversed order from the definition.
+
+    3. Save the script and cls -lalose Vim:
+      :wq
+
+    4. Make the syntax.sh file executable:
+      chmod +x syntax.sh
+
+    5. Lastly, run the script to see the output:
+      ./syntax.sh
+
+Formula: there is always a solution out there
+
+The only problem is time, how long it will take me to find the solution
+
+What do i need patience 
+
+Bash Function Arguments
+  To pass arguments to a function, add the parameters after the function call separated by spaces. The table below outlines the available options when working with bash function arguments
+
+    $0 : Reserves the function's name when defined in the terminal. When defined in a bash script, $0 returns the script's name and location
+
+    $1, $2, $3 $5 $19 etc: Corresponds to the argument's position after the function name
+
+
+    Questions
+    the name of function = arguments
+    arguments Hello world
+
+    hello is [$0, $1, $2]
+    
+    $#: Holds the count of positional arguments passed to the function
+
+
+    $@ and $*: Expands the list to separate strings. For example "$1", "$2", etc.
+      ex: 1, 2, 3
+
+    "$*" : Expands the list into a single string, separating parameters with a space. For example "$1 $2" etc.
+      ex: [1, 2, 3]
+
+Practise: Follow the steps below to test how the various arguments work in a function.
+
+1. Create a script called arguments:
+
+vim arguments.sh
+
+
+arguments () {
+        echo The function location is $0
+        echo There are $# arguments
+        echo "Argument 1 is $1"
+        echo "Argument 2 is $2"
+        echo "<$@>" and "<$*>" are the same.
+        echo List the elements in a for loop to see the difference!
+        echo "* gives:"
+        for arg in "$*"; do echo "<$arg>"; done
+        echo "@ gives:"
+        for arg in "$@"; do echo "<$arg>"; done
+}
+
+arguments hello world
 	
